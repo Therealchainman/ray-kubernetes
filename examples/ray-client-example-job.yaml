@@ -13,8 +13,8 @@ spec:
           imagePullPolicy: Always
           command: [ "/bin/bash", "-c", "--" ]
           args:
-            - "wget https://raw.githubusercontent.com/ray-project/ray/master/doc/kubernetes/example_scripts/job_example.py &&
-              python job_example.py"
+            - "wget -O ray-client-test-job.py https://raw.githubusercontent.com/Therealchainman/ray-kubernetes/master/examples/ray-client-test-job.py?token=ALKETSG6A252KVHTTDPRGX3A2W42Q &&
+              python ray-client-test-job.py"
           resources:
             requests:
               cpu: 100m

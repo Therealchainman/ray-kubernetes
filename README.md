@@ -20,7 +20,40 @@ ValueError: Failed to look up actor with name 'abc'. You are either trying to lo
 
 raise cloudpickle.loads(ticket.error)
 
+I was able to connect to the ray client from inside the cluster, by using a k8s resource called a job. 
+But I wasn't able to connect to the ray client externally by port-forward or without port-forward because my k8s cluster
+is on my laptop, so I should be able to access the endpoint from the actual internal cluster IP endpoint. 
+
+I don't know why but I can't see a way to connect to this.  
+There is this cloudpickle error
+difference between ray.client("addres").connect() and ray.connect("address")
+
+
+
+I should try an ingress to connect externally 
+
 
 
 ## Set up ingress for ray dashboard
 
+
+## Set up ingress for ray client
+
+
+## What is the Ray client? 
+
+It is in the util library for python.  so I guess it is a separate library, but it allows you to connect to the ray cluster.
+
+pickling protocol that is used for data transfer in between the ray client and the ray 
+
+## Endpoint in k8s services
+
+They are the cluster ip for k8 pods.  So the service shows an endpoint which is the IP for a pod.  
+
+## Creating a Ray Server
+How do we do this?  
+You can create a ray server
+
+Is this different from ray serve?  What is ray serve?  
+
+## 

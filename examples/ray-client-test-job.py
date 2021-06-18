@@ -20,7 +20,7 @@ def wait_for_nodes(expected):
     while True:
         resources = ray.cluster_resources()
         node_keys = [key for key in resources if "node" in key]
-        num_nodes = sum(resources[node_key] for node_key in node_keys)
+        num_nodes = sum(resources[node_key] for node_key in onde_keys)
         if num_nodes < expected:
             print("{} nodes have joined so far, waiting for {} more.".format(
                 num_nodes, expected - num_nodes))

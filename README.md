@@ -56,4 +56,28 @@ You can create a ray server
 
 Is this different from ray serve?  What is ray serve?  
 
-## 
+## Getting this to work
+
+
+ray.init(address="auto")
+2021-06-21 15:14:02,862	INFO worker.py:726 -- Connecting to existing Ray cluster at address: 172.17.0.10:6379
+
+What does this mean?  What is it doing, it is trying to connect to an existing ray cluster at this address apparently.  Notice it is using the endpoint for my ray cluster and the port for the redis server from the head node.  
+
+
+Exception ignored in: <function ClientBaseRef.__del__ at 0x7ffb0cbad4c0>
+Traceback (most recent call last):
+  File "/home/therealchainman/miniconda3/lib/python3.8/site-packages/ray/util/client/common.py", line 83, in __del__
+AttributeError: 'NoneType' object has no attribute 'is_connected'
+
+To clarify for anyone who is looking for what is the difference between the 3 on a simpler level. You can expose your service with minimal ClusterIp (within k8s cluster) or larger exposure with NodePort (within cluster external to k8s cluster) or LoadBalancer (external world or whatever you defined in your LB).
+
+ClusterIp exposure < NodePort exposure < LoadBalancer exposure
+
+ClusterIp
+Expose service through k8s cluster with ip/name:port
+NodePort
+Expose service through Internal network VM's also external to k8s ip/name:port
+LoadBalancer
+Expose service through External world or whatever you defined in your LB.
+
